@@ -1,0 +1,52 @@
+#+title: Lösungen zum 3. Übungsblatt
+#+date: 2018-05-02
+#+email: tobias.denkinger@tu-dresden.de
+#+options: toc:nil
+
+* Lösung zu Aufgabe 1
+
+/siehe Sol03.hs/
+
+* Lösung zu Aufgabe 2
+
+/siehe Sol03.hs/
+
+* Lösung zu Aufgabe 3
+
+Das für die Transformation genutzte Tupel ist jeweils doppelt unterstrichen (mit ~=~).
+
+#+begin_src
+⎧ ⎛ σ(σ(x₁   , α), σ(γ(x₃), x₃)) ⎞ ⎫
+⎨ ⎝ σ(σ(γ(x₂), α), σ(x₂   , x₃)) ⎠ ⎬
+⎩ ================================ ⎭
+
+Dek  ⎧ ⎛ σ(x₁   , α) ⎞  ⎛ σ(γ(x₃), x₃) ⎞ ⎫
+⇒    ⎨ ⎝ σ(γ(x₂), α) ⎠, ⎝ σ(x₂   , x₃) ⎠ ⎬
+     ⎩ ===============                   ⎭
+
+Dek  ⎧ ⎛ x₁    ⎞  ⎛ α ⎞  ⎛ σ(γ(x₃), x₃) ⎞ ⎫
+⇒    ⎨ ⎝ γ(x₂) ⎠, ⎝ α ⎠, ⎝ σ(x₂   , x₃) ⎠ ⎬
+     ⎩                   ================ ⎭
+
+Dek  ⎧ ⎛ x₁    ⎞  ⎛ α ⎞  ⎛ γ(x₃) ⎞  ⎛ x₃ ⎞ ⎫
+⇒    ⎨ ⎝ γ(x₂) ⎠, ⎝ α ⎠, ⎝ x₂    ⎠, ⎝ x₃ ⎠ ⎬
+     ⎩            =====                    ⎭
+
+Dek  ⎧ ⎛ x₁    ⎞  ⎛ γ(x₃) ⎞  ⎛ x₃ ⎞ ⎫
+⇒    ⎨ ⎝ γ(x₂) ⎠, ⎝ x₂    ⎠, ⎝ x₃ ⎠ ⎬
+     ⎩                       ====== ⎭
+
+El   ⎧ ⎛ x₁    ⎞  ⎛ γ(x₃) ⎞ ⎫
+⇒    ⎨ ⎝ γ(x₂) ⎠, ⎝ x₂    ⎠ ⎬
+     ⎩            ========= ⎭
+
+Vert ⎧ ⎛ x₁    ⎞  ⎛ x₂    ⎞ ⎫
+⇒    ⎨ ⎝ γ(x₂) ⎠, ⎝ γ(x₃) ⎠ ⎬
+     ⎩            ========= ⎭
+
+Sub  ⎧ ⎛ x₁       ⎞  ⎛ x₂    ⎞ ⎫
+⇒    ⎨ ⎝ γ(γ(x₃)) ⎠, ⎝ γ(x₃) ⎠ ⎬
+     ⎩                         ⎭
+
+x₁ ↦ γ(γ(x₃)),  x₂ ↦ γ(x₃),  x₃ ↦ x₃
+#+end_src
