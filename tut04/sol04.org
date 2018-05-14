@@ -1,0 +1,137 @@
+#+title: Lösungen zum 4. Übungsblatt
+#+date: 2018-05-09
+#+email: tobias.denkinger@tu-dresden.de
+#+options: tol:nil
+
+* Lösung zu Aufgabe 1 (AGS 12.2.13)
+** Teilaufgabe a
+#+begin_src
+⎧ ⎛ σ(γ(x₂), σ(γ(α), x₃      )) ⎞ ⎫
+⎨ ⎝ σ(x₁   , σ(γ(α), σ(α, x₁))) ⎠ ⎬
+⎩                                 ⎭
+
+Dek ⎧ ⎛ γ(x₂) ⎞  ⎛ σ(γ(α), x₃      ) ⎞ ⎫
+⇒   ⎨ ⎝ x₁    ⎠, ⎝ σ(γ(α), σ(α, x₁)) ⎠ ⎬
+    ⎩                                  ⎭
+
+Dek ⎧ ⎛ γ(x₂) ⎞  ⎛ γ(α) ⎞, ⎛ x₃       ⎞ ⎫
+⇒   ⎨ ⎝ x₁    ⎠, ⎝ γ(α) ⎠, ⎝ σ(α, x₁) ⎠ ⎬
+    ⎩                                   ⎭
+
+Dek ⎧ ⎛ γ(x₂) ⎞  ⎛ α ⎞, ⎛ x₃       ⎞ ⎫
+⇒   ⎨ ⎝ x₁    ⎠, ⎝ α ⎠, ⎝ σ(α, x₁) ⎠ ⎬
+    ⎩                                ⎭
+
+Dek ⎧ ⎛ γ(x₂) ⎞  ⎛ x₃       ⎞ ⎫
+⇒   ⎨ ⎝ x₁    ⎠, ⎝ σ(α, x₁) ⎠ ⎬
+    ⎩                         ⎭
+
+Ver ⎧ ⎛ x₁    ⎞  ⎛ x₃       ⎞ ⎫
+⇒   ⎨ ⎝ γ(x₂) ⎠, ⎝ σ(α, x₁) ⎠ ⎬
+    ⎩                         ⎭
+
+Sub ⎧ ⎛ x₁    ⎞  ⎛ x₃          ⎞ ⎫
+⇒   ⎨ ⎝ γ(x₂) ⎠, ⎝ σ(α, γ(x₂)) ⎠ ⎬
+    ⎩                            ⎭
+
+x₁ ↦ γ(x₂),  x₂ ↦ x₂,  x₃ ↦ σ(α, γ(x₂))
+#+end_src
+
+** Teilaufgabe b
+
+x₁ ↦ γ(α),  x₂ ↦ α, x₃ ↦ σ(α, γ(α))
+x₁ ↦ γ(γ(x₂)),  x₂ ↦ γ(x₂),  x₃ ↦ σ(α, γ(γ(x₂)))
+
+* Lösung zu Aufgabe 2 (AGS 12.3.20)
+
+*Induktionsanfang (IA)*
+Sei xs = [].
+#+begin_src Haskell
+sum (foo []) = sum []    (2)
+             = 0         (6)
+
+2 * sum [] - length [] = 2 * 0 - length []    (6)
+                       = 0 - length []
+                       = 0 - 0                (10)
+                       = 0
+#+end_src
+
+*Induktionsschritt (IS)*
+Sei xs :: [Int] sodass
+  sum (foo xs) = 2 * sum xs - length xs
+
+Sei x :: Int.
+#+begin_src Haskell
+sum (foo (x : xs)) = sum (x : x : (-1) : foo xs)             (3)
+                   = x + x + (-1) + sum (foo xs)             (3⋅7)
+                   = x + x + (-1) + 2 * sum xs - length xs   (IH)
+                   = (-1) + 2 * (x + sum xs) - length xs
+                   = 2 * (x + sum xs) - (1 + length xs)
+                   = 2 * sum (x : xs) - (1 + length xs)      (7)
+                   = 2 * sum (x : xs) - length (x : xs)      (11)
+#+end_src
+
+* Lösung zu Aufgabe 3 (AGS 12.3.11)
+
+*Induktionsanfang (IA)*
+Sei t = Leaf x, wobei x :: Float.
+
+Sei a :: Float.
+#+begin_src Haskell
+sum (add (Leaf x) a)
+= sum (Leaf (x + a))      (4)
+= x + a                   (12)
+= sum (Leaf x) + a        (12)
+= sum (rev (Leaf x)) + a  (8)
+#+end_src 
+
+*Induktionsschritt (IS)*
+Seien l, r :: Tree, sodass für jedes a :: Float gilt:
+  sum (add l a) = sum (rev l) + a
+  sum (add r a) = sum (rev r) + a
+
+Sei x, a :: Float.
+#+begin_src Haskell
+sum (add (Branch x l r) a)
+= sum (Branch (x + a / 3) (add l (a / 3)) (add r (a / 3)))    (5)
+= x + a / 3 + sum (add l (a / 3)) + sum (add r (a / 3))       (13)
+= x + a / 3 + sum (rev l) + a / 3 + sum (rev r) + a / 3       (IH)
+= x + sum (rev r) + sum (rev l) + a
+= sum (Branch x (rev r) (rev l)) + a                          (13)
+= sum (rev (Branch x l r)) + a                                (9)
+#+end_src
+
+* Lösung zu Aufgabe 4 (AGS 12.4.1)
+** Teilaufgabe a
+  * (λx.xy)(λy.y)
+    * GV = {x, y}   gebundene Variablen
+    * FV = {y}      frei VORKOMMENDE Variablen
+  * (λx.(λy.z(λz.z(λx.y)))
+    * GV = {x, y, z}
+    * FV = {z}
+  * (λx.(λy.xz(yz)))(λx.y(λy.y))
+    * GV = {x, y}
+    * FV = {y, z}
+
+** Teilaufgabe b
+
+⇒ₐ steht für α-Konversion
+
+#+begin_src
+(λx.(λy.xz(yz)))(λx.y(λy.y))
+    ----------- ------------
+    GV = {y}    FV = {y}
+
+⇒ₐ (λx.(λy₁.xz(y₁z)))(λx,y(λy.y))
+
+⇒ᵦ (λy₁.(λx.y(λy.y))z(y₁z))
+
+
+(λx.(λy.(λz.z)))x(+y1)
+
+(λx.(λy.x(λz.yz)))(((λx.(λy.y)8)(λx.(λy.y)x))
+
+(λh.(λx.h(xx))(λx.h(xx)))((λx.x)(+15))
+
+(λf.(λa.(λbfab)))(λx.(λy.x))
+#+end_src
