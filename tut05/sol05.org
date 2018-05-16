@@ -1,0 +1,68 @@
+#+title: Lösungen zum 5. Übungsblatt
+#+date: 2018-05-16
+#+email: tobias.denkinger@tu-dresden.de
+#+options: toc:nil
+
+* Lösung zu Aufgabe 1
+
+*Induktionsanfang (IA)*
+Sei t = Node i [] für ein i :: Int.
+#+begin_src haskell
+product (yield (Node i [])) = product [i]            (4)
+                            = i                      (L1)
+                            = yieldProd (Node i [])  (8)
+#+end_src
+
+*Induktionsschritt (IS)*
+Sei k ≥ 1.  Sei t1, …, tk :: IntTree, sodass für jedes j ∈ {1, …, k} gilt:
+  product (yield tj) = yieldProd tj.
+
+Sei weiterhin i :: Int und t = Node i [t1, …, tk].
+#+begin_src haskell
+product (yield (Node i [t1, …, tk]))
+= product (concat (map yield [t1, …, tk]))              (5)
+= product (concat [yield t1, …, yield tk])              (L2)
+= product [product (yield t1), …, product (yield tk)]   (L3)
+= product [yieldProd t1, …, yieldProd tk]               (IH)
+= product (map yieldProd [t1, …, tk])                   (L2)
+= yieldProd (Node i [t1, …, tk])                        (9)
+#+end_src
+
+* Lösung zu Aufgabe 2 (AGS 12.4.36)
+** Teilaufgabe a
+**jetzt ohne Fehler**
+
+#+begin_src elisp
+⟨pow⟩⟨2⟩
+= (λnfz. n(λgx. g(gx))fz) ⟨2⟩
+⇒* (λfz. ⟨2⟩(λgx. g(gx))fz)
+= (λfz. (λxy.x(xy)) (λgx. g(gx)) f z)
+⇒* (λfz. (λgx. g(gx)) ((λgx. g(gx))f) z)
+⇒* (λfz. (λgx. g(gx)) (λx. f(fx)) z)
+⇒* (λfz. (λx. f(fx)) ((λx. f(fx)) z))
+⇒* (λfz. (λx. f(fx)) (f(fz)))
+⇒* (λfz. f(f(f(fz)))) 
+= ⟨4⟩
+#+end_src
+
+** Teilaufgabe b
+f(n) = 2ⁿ
+
+** Zusatzaufgabe c
+⟨pot⟩ = (λnmfz. nmfz)
+
+* Lösung zu Aufgabe 3 (AGS 12.4.29)
+** Teilaufgabe a
+A = (λxyz. y)
+
+** Teilaufgabe b
+B = (λxy. yx)
+
+** Teilaufgabe c
+C = (λx. xx)
+
+** Teilaufgabe d
+D = ((λx. xx)(λx. xx))
+
+** Teilaufgabe e
+E = (λxy. xyx)
