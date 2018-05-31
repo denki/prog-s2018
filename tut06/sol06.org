@@ -1,0 +1,80 @@
+#+title: Lösungen zum 6. Übungsblatt
+#+date: 2018-05-30
+#+email: tobias.denkinger@tu-dresden.de
+#+options: toc:nil
+
+* Lösung zu Aufgabe 1 (AGS 12.4.32)
+** Teilaufgabe a
+#+begin_src elisp
+(λfx.ffx)(λy.x)z
+   ----- ------
+  GV={x} FV={x}
+
+⇒ₐ (λfx₁.ffx₁)(λy.x)z
+
+⇒ᵦ (λx₁.(λy.x)(λy.x)x₁)z
+           -- -----
+        GV=∅  FV={x}
+
+⇒ᵦ (λx₁.xx₁)z
+       --- --
+     GV=∅  FV={z}
+
+⇒ᵦ xz
+#+end_src
+
+** Teilaufgabe b
+#+begin_src elisp
+⟨Y⟩⟨F⟩
+= (λh.(λy.h(yy))(λy.h(yy))) ⟨F⟩
+⇒* (λy.⟨F⟩(yy))(λy.⟨F⟩(yy)) = ⟨Y_F⟩
+⇒* ⟨F⟩ ((λy.⟨F⟩(yy))(λy.⟨F⟩(yy))) = ⟨F⟩ ⟨Y_F⟩
+
+⟨Y⟩⟨F⟩⟨6⟩⟨5⟩⟨3⟩
+⇒* ⟨F⟩ ⟨Y_F⟩ ⟨6⟩ ⟨5⟩ ⟨3⟩
+⇒* ⟨ite⟩ (⟨iszero⟩(⟨sub⟩⟨6⟩⟨5⟩))
+         (⟨add⟩⟨5⟩⟨3⟩)
+         (⟨succ⟩ (⟨Y_F⟩ (⟨pred⟩⟨6⟩) (⟨succ⟩⟨5⟩) (⟨mult⟩⟨2⟩⟨3⟩)))
+⇒* ⟨ite⟩ ⟨false⟩ (…) (⟨succ⟩ (⟨Y_F⟩ ⟨5⟩ ⟨6⟩ ⟨6⟩))
+⇒* ⟨succ⟩ (⟨Y_F⟩ ⟨5⟩ ⟨6⟩ ⟨6⟩)
+⇒* ⟨succ⟩ (⟨F⟩ ⟨Y_F⟩ ⟨5⟩ ⟨6⟩ ⟨6⟩)
+⇒* ⟨succ⟩ (⟨ite⟩ (⟨iszero⟩(⟨sub⟩⟨5⟩⟨6⟩))
+                 (⟨add⟩⟨6⟩⟨6⟩)
+                 (⟨succ⟩ (⟨Y_F⟩(⟨pred⟩⟨5⟩)(⟨succ⟩⟨6⟩)(⟨mult⟩⟨2⟩⟨6⟩)))
+          )
+⇒* ⟨succ⟩ (⟨ite⟩ ⟨true⟩ ⟨12⟩ (…))
+⇒* ⟨13⟩
+#+end_src
+
+** Teilaufgabe c
+#+begin_src elisp
+⟨G⟩ = (λgxy. ⟨ite⟩ (⟨iszero⟩x)
+                   (⟨mult⟩ ⟨2⟩ (⟨succ⟩y))
+                   (⟨ite⟩ (⟨iszero⟩y)
+                          (⟨mult⟩ ⟨2⟩ (⟨succ⟩x))
+                          (⟨add⟩ ⟨4⟩ (g (⟨pred⟩x) (⟨pred⟩y)))
+                   )
+      )
+#+end_src
+
+* Lösung zu Aufgabe 2 (AGS 13.1)
+  **siehe sol06-2.pl**
+
+* Lösung zu Aufgabe 3 (AGS 13.2)
+#+begin_src prolog
+            ?- prod(s(s(0)), s(0), X).
+            ?- prod(s(0), s(0), W)                , sum(s(0), W, X).
+            ?- prod(0, s(0), W1), sum(s(0), W1, W), sum(s(0), W, X).
+{W1 = 0}    ?- prod(0, s(0), 0 ), sum(s(0), 0 , W), sum(s(0), W, X).
+            ?- sum(s(0), 0 , W), sum(s(0), W, X).
+{W = s(Z)}  ?- sum(s(0), 0, s(Z)), sum(s(0), s(Z), X).
+            ?- sum(0, 0, Z), sum(s(0), s(Z), X).
+{Z = 0}     ?- sum(0, 0, 0), sum(s(0), s(0), X).
+            ?- sum(s(0), s(0), X).
+{X = s(Z1)} ?- sum(s(0), s(0), s(Z1)).
+            ?- sum(0, s(0), Z1).
+{Z1 = s(0)} ?- sum(0, s(0), s(0)).
+            ?-.
+
+X = s(Z1) = s(s(0))
+#+end_src
