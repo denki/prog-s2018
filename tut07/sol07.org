@@ -1,0 +1,127 @@
+#+title: Lösungen zum 7. Übungsblatt
+#+date: 2018-06-07
+#+email: tobias.denkinger@tu-dresden.de
+#+options: toc:nil
+
+* Lösung zu Aufgabe 1 (AGS 12.4.30 b,c)
+** Teilaufgabe a
+
+#+begin_src elisp
+⟨G⟩ = λgmn. ⟨ite⟩ (⟨iszero⟩n)
+                  m
+                  (⟨ite⟩ (⟨iszero⟩ (⟨pred⟩n))
+                         (⟨succ⟩m)
+                         (⟨add⟩ (g m (⟨pred⟩(⟨pred⟩ n))) (g m (⟨pred⟩n)))
+                  )
+#+end_src
+
+
+** Teilaufgabe b
+
+#+begin_src elisp
+⟨Y⟩⟨F⟩
+= (λh.(λy.h(yy))(λy.h(yy))) ⟨F⟩
+⇒* (λy.⟨F⟩(yy))(λy.⟨F⟩(yy)) = ⟨Y_F⟩
+⇒* ⟨F⟩ ((λy.⟨F⟩(yy))(λy.⟨F⟩(yy))) = ⟨F⟩ ⟨Y_F⟩
+
+⟨Y⟩⟨F⟩⟨2⟩⟨1⟩
+⇒* ⟨F⟩ ⟨Y_F⟩ ⟨2⟩ ⟨1⟩
+⇒* ⟨ite⟩ (⟨iszero⟩⟨1⟩) (…) (⟨mult⟩ ⟨2⟩ (⟨Y_F⟩ ⟨2⟩ (⟨pred⟩⟨1⟩)))
+         -------------                            -----------
+         ⇒* ⟨false⟩                               ⇒* ⟨0⟩
+⇒* ⟨mult⟩ ⟨2⟩ (⟨Y_F⟩ ⟨2⟩ ⟨0⟩)
+⇒* ⟨mult⟩ ⟨2⟩ (⟨F⟩ ⟨Y_F⟩ ⟨2⟩ ⟨0⟩)
+⇒* ⟨mult⟩ ⟨2⟩ (⟨ite⟩ (⟨iszero⟩ ⟨0⟩) ⟨1⟩ (…))
+                     --------------
+                     ⇒* ⟨true⟩
+⇒* ⟨mult⟩ ⟨2⟩ ⟨1⟩
+⇒* ⟨2⟩
+#+end_src
+
+* Lösung zu Aufgabe 2 (AGS 13.6)
+
+#+begin_src prolog
+% (a)
+edge(1, 1). %1
+edge(1, 2). %2
+edge(1, 4). %3
+edge(3, 2). %4
+edge(4, 3). %5
+
+% (b)
+path(X, X). %7
+path(U, W) :- edge(U, V), path(V, W). %8
+
+% (c)
+        ?- path(4, X).
+{X = 4} ?-.             % 7
+
+        ?- path(4, X).
+        ?- edge(4, V), path(V, X). % 8
+{V = 3} ?- path(3, X).             % 5
+{X = 3} ?-.                        % 7
+
+         ?- path(4, X).
+         ?- edge(4, V), path(V, X).   % 8
+{V = 3}  ?- path(3, X).               % 5
+         ?- edge(3, V1), path(V1, X). % 8
+{V1 = 2} ?- path(2, X).               % 4
+{X = 2}  ?-.                          % 7
+
+% X ∈ {4, 3, 2}
+#+end_src
+
+* Lösung zu Aufgabe 3 (AGS 13.5)
+** Teilaufgabe a
+#+begin_src prolog
+                           ?- subt(s(X, Y),  s(s(a, b), s(b, a))).
+{X = s(a, b), Y = s(b, a)} ?-.                                      % 1 
+
+               ?- subt(s(X, Y),  s(s(a, b), s(b, a))).
+               ?- subt(s(X, Y),  s(b, a)).              % 2
+{X = b, Y = a} ?-.                                      % 1
+
+               ?- subt(s(X, Y),  s(s(a, b), s(b, a))).
+               ?- subt(s(X, Y),  s(a, b)).              % 3
+{X = a, Y = b} ?-.                                      % 1
+
+% (X, Y) ∈ {(s(a, b), s(b, a)), (b, a), (a, b)}
+#+end_src
+
+** Teilaufgabe b
+#+begin_src prolog
+              ?- subt(s(a, a), X).
+{X = s(a, a)} ?-.                  % 1
+              
+               ?- subt(s(a, a), X).
+{X = s(_, T2)} ?- subt(s(a, a), T2). % 2
+{T2 = s(a, a)} ?-.                   % 1
+              
+               ?- subt(s(a, a), X).
+{X = s(T1, _)} ?- subt(s(a, a), T1). % 3
+{T1 = s(a, a)} ?-.                   % 1
+
+% X ∈ {s(a, a), s(a, s(a, a)), s(s(a, a), a), …}
+#+end_src
+
+* Lösung zu Aufgabe 4 (AGS 14.13 b)
+
+| BZ |  DK | HS    | IN | OUT |          |
+|    | <r> |       |    |     |          |
+|----+-----+-------+----+-----+----------|
+|  1 |   ε | []    | 2  | ε   | READ 1;  |
+|  2 |     | [1/2] | ε  |     | LOAD 1;  |
+|  3 |   2 |       |    |     | LIT 1;   |
+|  4 | 1:2 |       |    |     | GT;      |
+|  5 |   1 |       |    |     | JMC 12;  |
+|  6 |   ε |       |    |     | LOAD 1;  |
+|  7 |   2 |       |    |     | LIT 2;   |
+|  8 | 2:2 |       |    |     | DIV;     |
+|  9 |   1 |       |    |     | STORE 1; |
+| 10 |   ε | [1/1] |    |     | WRITE 1; |
+| 11 |     |       |    | 1   | JMP 2;   |
+|  2 |     |       |    |     | LOAD 1;  |
+|  3 |   1 |       |    |     | LIT 1;   |
+|  4 | 1:1 |       |    |     | GT;      |
+|  5 |   0 |       |    |     | JMC 12;  |
+| 12 |   ε |       |    |     |          |
