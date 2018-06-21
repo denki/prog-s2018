@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-06-20 Mi 16:13 -->
+<!-- 2018-06-21 Do 08:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lösungen zum 8. Übungsblatt</title>
@@ -231,12 +231,12 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Lösungen zum 8. Übungsblatt</h1>
 
-<div id="outline-container-org47bb3df" class="outline-2">
-<h2 id="org47bb3df"><span class="section-number-2">1</span> Lösung zu Aufgabe 1</h2>
+<div id="outline-container-orgf6918b6" class="outline-2">
+<h2 id="orgf6918b6"><span class="section-number-2">1</span> Lösung zu Aufgabe 1</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org6b3b412" class="outline-3">
-<h3 id="org6b3b412"><span class="section-number-3">1.1</span> Teilaufgabe a</h3>
+<div id="outline-container-org8f70fe9" class="outline-3">
+<h3 id="org8f70fe9"><span class="section-number-3">1.1</span> Teilaufgabe a</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-prolog"><span style="color: #268bd2;">nat</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">0</span><span style="color: #2aa198;">)</span>.                              <span style="color: #93a1a1;">% </span><span style="color: #93a1a1;">1</span>
@@ -256,8 +256,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd4f98bb" class="outline-3">
-<h3 id="orgd4f98bb"><span class="section-number-3">1.2</span> Teilaufgabe b</h3>
+<div id="outline-container-org52d88f7" class="outline-3">
+<h3 id="org52d88f7"><span class="section-number-3">1.2</span> Teilaufgabe b</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-prolog">          ?- div<span style="color: #2aa198;">(</span>&lt;<span style="color: #6c71c4;">3</span>&gt;, &lt;<span style="color: #6c71c4;">2</span>&gt;, &lt;<span style="color: #6c71c4;">1</span>&gt;<span style="color: #2aa198;">)</span>.
@@ -277,12 +277,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org4aa5acc" class="outline-2">
-<h2 id="org4aa5acc"><span class="section-number-2">2</span> Lösung zu Aufgabe 2 (AGS 14.1)</h2>
+<div id="outline-container-orgd3d9a25" class="outline-2">
+<h2 id="orgd3d9a25"><span class="section-number-2">2</span> Lösung zu Aufgabe 2 (AGS 14.1)</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgc90327b" class="outline-3">
-<h3 id="orgc90327b"><span class="section-number-3">2.1</span> Teilaufgabe a</h3>
+<div id="outline-container-org6426420" class="outline-3">
+<h3 id="org6426420"><span class="section-number-3">2.1</span> Teilaufgabe a</h3>
 <div class="outline-text-3" id="text-2-1">
 <pre class="example">
 trans(#include &lt;stdio.h&gt; int main() {…})
@@ -307,8 +307,8 @@ trans(#include &lt;stdio.h&gt; int main() {…})
 </div>
 </div>
 
-<div id="outline-container-org46cdd0f" class="outline-3">
-<h3 id="org46cdd0f"><span class="section-number-3">2.2</span> Teilaufgabe b</h3>
+<div id="outline-container-org5eb4bf0" class="outline-3">
+<h3 id="org5eb4bf0"><span class="section-number-3">2.2</span> Teilaufgabe b</h3>
 <div class="outline-text-3" id="text-2-2">
 <pre class="example">
 1: READ 1;   4: LOAD 2;   7: LOAD 1;    10: LOAD 2;
@@ -319,23 +319,23 @@ trans(#include &lt;stdio.h&gt; int main() {…})
 </div>
 </div>
 
-<div id="outline-container-org4487b0e" class="outline-2">
-<h2 id="org4487b0e"><span class="section-number-2">3</span> Lösung zu Aufgabe 3 (AGS 14.10)</h2>
+<div id="outline-container-orgdc29375" class="outline-2">
+<h2 id="orgdc29375"><span class="section-number-2">3</span> Lösung zu Aufgabe 3 (AGS 14.10)</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orge67fb03" class="outline-3">
-<h3 id="orge67fb03"><span class="section-number-3">3.1</span> Teilaufgabe a</h3>
+<div id="outline-container-org105026a" class="outline-3">
+<h3 id="org105026a"><span class="section-number-3">3.1</span> Teilaufgabe a</h3>
 <div class="outline-text-3" id="text-3-1">
 <pre class="example">
-1: READ 2;   4: STORE 1;  7: LT;       10: LIT 1;    13: LOAD 2;   16: JMP 9;
+1: READ 2;   4: STORE 1;  7: LT;       10: LIT 1;    13: LOAD 2;   16: JMP 5;
 2: READ 3;   5: LOAD 1;   8: JMC 17;   11: ADD;      14: LOAD 2;   17: WRITE 2;
 3: LIT 0;    6: LOAD 3;   9: LOAD 1;   12: STORE 1;  15: MUL;
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org070a509" class="outline-3">
-<h3 id="org070a509"><span class="section-number-3">3.2</span> Teilaufgabe b</h3>
+<div id="outline-container-orgec00c5e" class="outline-3">
+<h3 id="orgec00c5e"><span class="section-number-3">3.2</span> Teilaufgabe b</h3>
 <div class="outline-text-3" id="text-3-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -486,8 +486,8 @@ trans(#include &lt;stdio.h&gt; int main() {…})
 </div>
 </div>
 
-<div id="outline-container-org956a4c7" class="outline-2">
-<h2 id="org956a4c7"><span class="section-number-2">4</span> Lösung zu Aufgabe 4 (AGS 15.18 b)</h2>
+<div id="outline-container-org98902dd" class="outline-2">
+<h2 id="org98902dd"><span class="section-number-2">4</span> Lösung zu Aufgabe 4 (AGS 15.18 b)</h2>
 <div class="outline-text-2" id="text-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -696,7 +696,7 @@ trans(#include &lt;stdio.h&gt; int main() {…})
 <div id="postamble" class="status">
 <p class="date">Date: 2018-06-13</p>
 <p class="author">Author: Tobias Denkinger</p>
-<p class="date">Created: 2018-06-20 Mi 16:13</p>
+<p class="date">Created: 2018-06-21 Do 08:23</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
