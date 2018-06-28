@@ -1,0 +1,101 @@
+#+title: Lösungen zum 10. Übungsblatt
+#+date: 2018-06-27
+#+email: tobias.denkinger@tu-dresden.de
+#+options: toc:nil
+
+* Lösung zu Aufgabe 1 (AGS 16.2)
+** Teilaufgabe a
+
+  * Iterationstabelle:
+   | # | x1    | z  |
+   |---+-------+----|
+   | 0 | x     | 0  |
+   | 1 | x - 1 | y  |
+   | 2 | x - 2 | 2y |
+   | 3 | x - 3 | 3y |
+   | ⋮ |       |    |
+   | i | x - i | iy |
+   | ⋮ |       |    |
+   | x | 0     | xy |
+
+   x1 = x - i    gdw.    i = x - x1
+   z = iy
+
+   z = (x - x1) ⋅ y
+
+  * SI = (z = (x - x1) ⋅ y) ∧ (x1 ≥ 0)
+
+** Teilaufgabe b
+
+  * A = SI
+  * B = SI ∧ ¬(x1 > 0)
+  * C = SI
+  * D = C
+  * E = SI ∧ (x1 > 0)
+  * G = D
+
+** Teilaufgabe c
+
+  * Beweisbaum siehe Folie
+  * Beweis der Implikation:
+
+(z = (x - x1) ⋅ y) ∧ (x1 ≥ 0) ∧ (x1 > 0)
+ ⟹ (z + y = (x - x1) ⋅ y + y) ∧ (x1 ≥ 0) ∧ (x1 > 0)
+ ⟹ (z + y = (x - x1 + 1) ⋅ y) ∧ (x1 ≥ 0) ∧ (x1 > 0)
+ ⟹ (z + y = (x - (x1 - 1)) ⋅ y) ∧ (x1 ≥ 0) ∧ (x1 > 0)
+ ⟹ (z + y = (x - (x1 - 1)) ⋅ y) ∧ (x1 > 0)
+ ⟹ (z + y = (x - (x1 - 1)) ⋅ y) ∧ (x1 - 1 ≥ 0)
+
+* Lösung zu Aufgabe 2
+** Teilaufgabe a
+
+  * A = true ∧ (y < 0)
+  * B = true ∧ ¬(y < 0)
+  * C = A
+  * D = C
+  * E = F
+  * F = G
+  * G = (- 3 ⋅ y + 1 ≥ 0)
+  * H = J
+  * J = (-x + 1 ≥ 0)
+  * K = (y ≥ 0)
+  * L = stärkere Vorbedingung
+  * M = Sequenzregel
+
+** Teilaufgabe b
+
+true ∧ (y < 0)
+ ⟹ (y < 0)
+ ⟹ (y ≤ -1)
+ ⟹ (3y ≤ -3)
+ ⟹ (-3y ≥ 3)
+ ⟹ (-3y + 1 ≥ 4)
+ ⟹ (-3 ⋅ y + 1 ≥ 0)
+
+* Lösung zu Aufgabe 3 (AGS 16.22)
+** Teilaufgabe a
+
+  * Iterationstabelle
+    | # | b  | i     |
+    |---+----+-------|
+    | 0 | 1  | n     |
+    | 1 | a  | n - 1 |
+    | 2 | a² | n - 2 |
+    | 3 | a³ | n - 3 |
+    | ⋮ |    |       |
+    | k | aᵏ | n - k |
+
+    b = aᵏ
+    i = n - k   gdw.   k = n - i
+
+    b = a^(n - i)
+
+  * SI = (b = a^(n - i)) ∧ (i ≥ 0)
+
+** Teilaufgabe b
+
+  * A = SI
+  * B = SI ∧ ¬(i > 0)
+  * C = SI
+  * D = SI ∧ (i > 0)
+  * E = {b = b * a; i = i - 1;}
