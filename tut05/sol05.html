@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-05-16 Mi 18:27 -->
+<!-- 2018-07-03 Di 12:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lösungen zum 5. Übungsblatt</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Tobias Denkinger" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -231,8 +230,8 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Lösungen zum 5. Übungsblatt</h1>
 
-<div id="outline-container-org95c44bb" class="outline-2">
-<h2 id="org95c44bb"><span class="section-number-2">1</span> Lösung zu Aufgabe 1</h2>
+<div id="outline-container-orga13f255" class="outline-2">
+<h2 id="orga13f255"><span class="section-number-2">1</span> Lösung zu Aufgabe 1</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>Induktionsanfang (IA)</b>
@@ -267,12 +266,12 @@ Sei weiterhin i :: Int und t = Node i [t1, …, tk].
 </div>
 </div>
 
-<div id="outline-container-org36112f5" class="outline-2">
-<h2 id="org36112f5"><span class="section-number-2">2</span> Lösung zu Aufgabe 2 (AGS 12.4.36)</h2>
+<div id="outline-container-org5cf5e37" class="outline-2">
+<h2 id="org5cf5e37"><span class="section-number-2">2</span> Lösung zu Aufgabe 2 (AGS 12.4.36)</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org0cc0d37" class="outline-3">
-<h3 id="org0cc0d37"><span class="section-number-3">2.1</span> Teilaufgabe a</h3>
+<div id="outline-container-org8b108ee" class="outline-3">
+<h3 id="org8b108ee"><span class="section-number-3">2.1</span> Teilaufgabe a</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 <b><b>jetzt ohne Fehler</b></b>
@@ -285,8 +284,9 @@ Sei weiterhin i :: Int und t = Node i [t1, …, tk].
 = <span style="color: #2aa198;">(</span>&#955;fz. <span style="color: #b58900;">(</span>&#955;xy.x<span style="color: #268bd2;">(</span>xy<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">(</span>&#955;gx. g<span style="color: #268bd2;">(</span>gx<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> f z<span style="color: #2aa198;">)</span>
 &#8658;* <span style="color: #2aa198;">(</span>&#955;fz. <span style="color: #b58900;">(</span>&#955;gx. g<span style="color: #268bd2;">(</span>gx<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">(</span><span style="color: #268bd2;">(</span>&#955;gx. g<span style="color: #6c71c4;">(</span>gx<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>f<span style="color: #b58900;">)</span> z<span style="color: #2aa198;">)</span>
 &#8658;* <span style="color: #2aa198;">(</span>&#955;fz. <span style="color: #b58900;">(</span>&#955;gx. g<span style="color: #268bd2;">(</span>gx<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">(</span>&#955;x. f<span style="color: #268bd2;">(</span>fx<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> z<span style="color: #2aa198;">)</span>
-&#8658;* <span style="color: #2aa198;">(</span>&#955;fz. <span style="color: #b58900;">(</span>&#955;x. f<span style="color: #268bd2;">(</span>fx<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">(</span><span style="color: #268bd2;">(</span>&#955;x. f<span style="color: #6c71c4;">(</span>fx<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span> z<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
-&#8658;* <span style="color: #2aa198;">(</span>&#955;fz. <span style="color: #b58900;">(</span>&#955;x. f<span style="color: #268bd2;">(</span>fx<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">(</span>f<span style="color: #268bd2;">(</span>fz<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+&#8658;* <span style="color: #2aa198;">(</span>&#955;fz. <span style="color: #b58900;">(</span>&#955;x. <span style="color: #268bd2;">(</span>&#955;x.f<span style="color: #6c71c4;">(</span>fx<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span>&#955;x.f<span style="color: #859900;">(</span>fx<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span> x<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> z<span style="color: #2aa198;">)</span>
+&#8658;* <span style="color: #2aa198;">(</span>&#955;fz. <span style="color: #b58900;">(</span>&#955;x. <span style="color: #268bd2;">(</span>&#955;x.f<span style="color: #6c71c4;">(</span>fx<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span> <span style="color: #268bd2;">(</span>f<span style="color: #6c71c4;">(</span>fx<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> z<span style="color: #2aa198;">)</span>
+&#8658;* <span style="color: #2aa198;">(</span>&#955;fz. <span style="color: #b58900;">(</span>&#955;x. f<span style="color: #268bd2;">(</span>f<span style="color: #6c71c4;">(</span>f<span style="color: #859900;">(</span>fx<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span> z<span style="color: #2aa198;">)</span>
 &#8658;* <span style="color: #2aa198;">(</span>&#955;fz. f<span style="color: #b58900;">(</span>f<span style="color: #268bd2;">(</span>f<span style="color: #6c71c4;">(</span>fz<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span> 
 = <span style="color: #2aa198;">&#10216;</span><span style="color: #6c71c4;">4</span><span style="color: #2aa198;">&#10217;</span>
 </pre>
@@ -294,8 +294,8 @@ Sei weiterhin i :: Int und t = Node i [t1, …, tk].
 </div>
 </div>
 
-<div id="outline-container-orgf8beb61" class="outline-3">
-<h3 id="orgf8beb61"><span class="section-number-3">2.2</span> Teilaufgabe b</h3>
+<div id="outline-container-org0f33edf" class="outline-3">
+<h3 id="org0f33edf"><span class="section-number-3">2.2</span> Teilaufgabe b</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 f(n) = 2ⁿ
@@ -303,8 +303,8 @@ f(n) = 2ⁿ
 </div>
 </div>
 
-<div id="outline-container-org4a176a2" class="outline-3">
-<h3 id="org4a176a2"><span class="section-number-3">2.3</span> Zusatzaufgabe c</h3>
+<div id="outline-container-orgfa1d9e3" class="outline-3">
+<h3 id="orgfa1d9e3"><span class="section-number-3">2.3</span> Zusatzaufgabe c</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 ⟨pot⟩ = (λnmfz. nmfz)
@@ -313,12 +313,12 @@ f(n) = 2ⁿ
 </div>
 </div>
 
-<div id="outline-container-orgdabfe13" class="outline-2">
-<h2 id="orgdabfe13"><span class="section-number-2">3</span> Lösung zu Aufgabe 3 (AGS 12.4.29)</h2>
+<div id="outline-container-orgea10f4b" class="outline-2">
+<h2 id="orgea10f4b"><span class="section-number-2">3</span> Lösung zu Aufgabe 3 (AGS 12.4.29)</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org226b07d" class="outline-3">
-<h3 id="org226b07d"><span class="section-number-3">3.1</span> Teilaufgabe a</h3>
+<div id="outline-container-org348f6a8" class="outline-3">
+<h3 id="org348f6a8"><span class="section-number-3">3.1</span> Teilaufgabe a</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 A = (λxyz. y)
@@ -326,8 +326,8 @@ A = (λxyz. y)
 </div>
 </div>
 
-<div id="outline-container-org78fc04a" class="outline-3">
-<h3 id="org78fc04a"><span class="section-number-3">3.2</span> Teilaufgabe b</h3>
+<div id="outline-container-orgf09bcea" class="outline-3">
+<h3 id="orgf09bcea"><span class="section-number-3">3.2</span> Teilaufgabe b</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 B = (λxy. yx)
@@ -335,8 +335,8 @@ B = (λxy. yx)
 </div>
 </div>
 
-<div id="outline-container-org5792523" class="outline-3">
-<h3 id="org5792523"><span class="section-number-3">3.3</span> Teilaufgabe c</h3>
+<div id="outline-container-orgb62c187" class="outline-3">
+<h3 id="orgb62c187"><span class="section-number-3">3.3</span> Teilaufgabe c</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 C = (λx. xx)
@@ -344,8 +344,8 @@ C = (λx. xx)
 </div>
 </div>
 
-<div id="outline-container-orge7cf967" class="outline-3">
-<h3 id="orge7cf967"><span class="section-number-3">3.4</span> Teilaufgabe d</h3>
+<div id="outline-container-orgc667967" class="outline-3">
+<h3 id="orgc667967"><span class="section-number-3">3.4</span> Teilaufgabe d</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 D = ((λx. xx)(λx. xx))
@@ -353,8 +353,8 @@ D = ((λx. xx)(λx. xx))
 </div>
 </div>
 
-<div id="outline-container-org703b96b" class="outline-3">
-<h3 id="org703b96b"><span class="section-number-3">3.5</span> Teilaufgabe e</h3>
+<div id="outline-container-org00dccfc" class="outline-3">
+<h3 id="org00dccfc"><span class="section-number-3">3.5</span> Teilaufgabe e</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 E = (λxy. xyx)
@@ -365,8 +365,7 @@ E = (λxy. xyx)
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2018-05-16</p>
-<p class="author">Author: Tobias Denkinger</p>
-<p class="date">Created: 2018-05-16 Mi 18:27</p>
+<p class="date">Created: 2018-07-03 Di 12:04</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

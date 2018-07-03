@@ -39,8 +39,9 @@ product (yield (Node i [t1, …, tk]))
 = (λfz. (λxy.x(xy)) (λgx. g(gx)) f z)
 ⇒* (λfz. (λgx. g(gx)) ((λgx. g(gx))f) z)
 ⇒* (λfz. (λgx. g(gx)) (λx. f(fx)) z)
-⇒* (λfz. (λx. f(fx)) ((λx. f(fx)) z))
-⇒* (λfz. (λx. f(fx)) (f(fz)))
+⇒* (λfz. (λx. (λx.f(fx)) ((λx.f(fx)) x)) z)
+⇒* (λfz. (λx. (λx.f(fx)) (f(fx))) z)
+⇒* (λfz. (λx. f(f(f(fx)))) z)
 ⇒* (λfz. f(f(f(fz)))) 
 = ⟨4⟩
 #+end_src
