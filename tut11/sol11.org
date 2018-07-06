@@ -24,27 +24,27 @@
 SI = (i ≤ n) ∧ (z = i³)
 
 ** Teilaufgabe b
-A = (z = 0) ∧ (n ≥ 0) ∧ (i = 0)
-B = C
-C = SI
-D = E
-E = SI ∧ ¬(i < n)
-F = (z = n³)
-G = (i < n) ∧ SI
-H = SI
+ * A = (z = 0) ∧ (n ≥ 0) ∧ (i = 0)
+ * B = C
+ * C = SI
+ * D = E
+ * E = SI ∧ ¬(i < n)
+ * F = (z = n³)
+ * G = (i < n) ∧ SI
+ * H = SI
 
 * Lösungen zu Aufgabe 2 (AGS 17.4)
 ** Teilaufgabe a
 
 #+begin_src
-READ 1;  READ 2;
-LOAD 2;  LIT 3;  LOAD 1;  STORE 3;  STORE 2;  STORE 1;  JMP test;
-test: LOAD 1;  LIT 0;  EQ;  JMC test.3;
-LOAD 3;  STORE 1;  WRITE 1; JMP 0;
-test.3:  LOAD 1; LIT 1; SUB;
+         READ 1;  READ 2;
+         LOAD 2;  LIT 3;  LOAD 1;  STORE 3;  STORE 2;  STORE 1;  JMP test;
+test:    LOAD 1;  LIT 0;  EQ;  JMC test.3;
+         LOAD 3;  STORE 1;  WRITE 1; JMP 0;
+test.3:  LOAD 1;  LIT 1;  SUB;
          LOAD 3;
-         LOAD 2; LOAD 3; MUL; LOAD 3; ADD;
-         STORE 3; STORE 2; STORE 1;
+         LOAD 2;  LOAD 3;  MUL;  LOAD 3;  ADD;
+         STORE 3;  STORE 2;  STORE 1;
          JMP test;
 #+end_src
 
@@ -76,10 +76,10 @@ main = do x1 <- readLn
 ** Teilaufgabe b
 
 #+begin_src
-f: LOAD 1; LIT 42; LT; JMC f.3;
-   LOAD 1; STORE 1; WRITE 1; JMP 0;
-f.3: LOAD 1; LIT 42; GT; JMC f.3.3;
-     LOAD 1; LIT 2; DIV; STORE 1; JMP f;
+f:     LOAD 1; LIT 42; LT; JMC f.3;
+       LOAD 1; STORE 1; WRITE 1; JMP 0;
+f.3:   LOAD 1; LIT 42; GT; JMC f.3.3;
+       LOAD 1; LIT 2; DIV; STORE 1; JMP f;
 f.3.3: LIT 42; STORE 1; WRITE 1; JMP 0;
 #+end_src
 
@@ -93,14 +93,13 @@ f.3.3: LIT 42; STORE 1; WRITE 1; JMP 0;
 | 2 | a - 6   |
 | ⋮ |         |
 | i | a - 3⋅i |
-|   |         |
 
 SI = (x ≥ 0) ∧ (x mod 3 = a mod 3)
 
 ** Teilaufgabe b
 
-A = SI
-B = SI ∧ ¬(x > 2)
-C = SI ∧ (x > 2)
-D = SI
-E = (x - 3 ≥ 0) ∧ ((x - 3) mod 3 = a mod 3)
+ * A = SI
+ * B = SI ∧ ¬(x > 2)
+ * C = SI ∧ (x > 2)
+ * D = SI
+ * E = (x - 3 ≥ 0) ∧ ((x - 3) mod 3 = a mod 3)

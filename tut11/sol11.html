@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-07-06 Fr 11:21 -->
+<!-- 2018-07-06 Fr 14:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Lösungen zum 11. Übungsblatt</title>
@@ -230,8 +230,8 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Lösungen zum 11. Übungsblatt</h1>
 
-<div id="outline-container-orgf3db44e" class="outline-2">
-<h2 id="orgf3db44e"><span class="section-number-2">1</span> Organisatorisches</h2>
+<div id="outline-container-org015ef89" class="outline-2">
+<h2 id="org015ef89"><span class="section-number-2">1</span> Organisatorisches</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>Es wird einen Lernraum Programmierung geben.  (Aber wann?)</li>
@@ -244,12 +244,12 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org43ca669" class="outline-2">
-<h2 id="org43ca669"><span class="section-number-2">2</span> Lösungen zu Aufgabe 1 (AGS 16.26)</h2>
+<div id="outline-container-org4dde1ee" class="outline-2">
+<h2 id="org4dde1ee"><span class="section-number-2">2</span> Lösungen zu Aufgabe 1 (AGS 16.26)</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgd82dc6a" class="outline-3">
-<h3 id="orgd82dc6a"><span class="section-number-3">2.1</span> Teilaufgabe a</h3>
+<div id="outline-container-orge29ae0e" class="outline-3">
+<h3 id="orge29ae0e"><span class="section-number-3">2.1</span> Teilaufgabe a</h3>
 <div class="outline-text-3" id="text-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -313,46 +313,46 @@ SI = (i ≤ n) ∧ (z = i³)
 </div>
 </div>
 
-<div id="outline-container-orgd36627b" class="outline-3">
-<h3 id="orgd36627b"><span class="section-number-3">2.2</span> Teilaufgabe b</h3>
+<div id="outline-container-org2f223e6" class="outline-3">
+<h3 id="org2f223e6"><span class="section-number-3">2.2</span> Teilaufgabe b</h3>
 <div class="outline-text-3" id="text-2-2">
-<p>
-A = (z = 0) ∧ (n ≥ 0) ∧ (i = 0)
-B = C
-C = SI
-D = E
-E = SI ∧ ¬(i &lt; n)
-F = (z = n³)
-G = (i &lt; n) ∧ SI
-H = SI
-</p>
+<ul class="org-ul">
+<li>A = (z = 0) ∧ (n ≥ 0) ∧ (i = 0)</li>
+<li>B = C</li>
+<li>C = SI</li>
+<li>D = E</li>
+<li>E = SI ∧ ¬(i &lt; n)</li>
+<li>F = (z = n³)</li>
+<li>G = (i &lt; n) ∧ SI</li>
+<li>H = SI</li>
+</ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8733add" class="outline-2">
-<h2 id="org8733add"><span class="section-number-2">3</span> Lösungen zu Aufgabe 2 (AGS 17.4)</h2>
+<div id="outline-container-org2cc3ac0" class="outline-2">
+<h2 id="org2cc3ac0"><span class="section-number-2">3</span> Lösungen zu Aufgabe 2 (AGS 17.4)</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgeff6b73" class="outline-3">
-<h3 id="orgeff6b73"><span class="section-number-3">3.1</span> Teilaufgabe a</h3>
+<div id="outline-container-orgdae36ad" class="outline-3">
+<h3 id="orgdae36ad"><span class="section-number-3">3.1</span> Teilaufgabe a</h3>
 <div class="outline-text-3" id="text-3-1">
 <pre class="example">
-READ 1;  READ 2;
-LOAD 2;  LIT 3;  LOAD 1;  STORE 3;  STORE 2;  STORE 1;  JMP test;
-test: LOAD 1;  LIT 0;  EQ;  JMC test.3;
-LOAD 3;  STORE 1;  WRITE 1; JMP 0;
-test.3:  LOAD 1; LIT 1; SUB;
+         READ 1;  READ 2;
+         LOAD 2;  LIT 3;  LOAD 1;  STORE 3;  STORE 2;  STORE 1;  JMP test;
+test:    LOAD 1;  LIT 0;  EQ;  JMC test.3;
+         LOAD 3;  STORE 1;  WRITE 1; JMP 0;
+test.3:  LOAD 1;  LIT 1;  SUB;
          LOAD 3;
-         LOAD 2; LOAD 3; MUL; LOAD 3; ADD;
-         STORE 3; STORE 2; STORE 1;
+         LOAD 2;  LOAD 3;  MUL;  LOAD 3;  ADD;
+         STORE 3;  STORE 2;  STORE 1;
          JMP test;
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org0de95a0" class="outline-3">
-<h3 id="org0de95a0"><span class="section-number-3">3.2</span> Teilaufgabe b</h3>
+<div id="outline-container-orge7720d6" class="outline-3">
+<h3 id="orge7720d6"><span class="section-number-3">3.2</span> Teilaufgabe b</h3>
 <div class="outline-text-3" id="text-3-2">
 <div class="org-src-container">
 <pre class="src src-haskell"><span style="color: #268bd2;">f</span> <span style="color: #268bd2;">::</span> <span style="color: #b58900;">Int</span> <span style="color: #268bd2;">-&gt;</span> <span style="color: #b58900;">Int</span> <span style="color: #268bd2;">-&gt;</span> <span style="color: #b58900;">Int</span> <span style="color: #268bd2;">-&gt;</span> <span style="color: #b58900;">Int</span>
@@ -368,12 +368,12 @@ test.3:  LOAD 1; LIT 1; SUB;
 </div>
 </div>
 
-<div id="outline-container-orgcfa0e48" class="outline-2">
-<h2 id="orgcfa0e48"><span class="section-number-2">4</span> Lösungen zu Aufgabe 3 (AGS 17.27 a, b)</h2>
+<div id="outline-container-org2976602" class="outline-2">
+<h2 id="org2976602"><span class="section-number-2">4</span> Lösungen zu Aufgabe 3 (AGS 17.27 a, b)</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org4168dbd" class="outline-3">
-<h3 id="org4168dbd"><span class="section-number-3">4.1</span> Teilaufgabe a</h3>
+<div id="outline-container-org4f77993" class="outline-3">
+<h3 id="org4f77993"><span class="section-number-3">4.1</span> Teilaufgabe a</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 <pre class="src src-haskell"><span style="color: #93a1a1;">--   </span><span style="color: #93a1a1;">i      sum    j      prod</span>
@@ -390,14 +390,14 @@ test.3:  LOAD 1; LIT 1; SUB;
 </div>
 </div>
 </div>
-<div id="outline-container-orgeeb8d0b" class="outline-3">
-<h3 id="orgeeb8d0b"><span class="section-number-3">4.2</span> Teilaufgabe b</h3>
+<div id="outline-container-org6aae1dc" class="outline-3">
+<h3 id="org6aae1dc"><span class="section-number-3">4.2</span> Teilaufgabe b</h3>
 <div class="outline-text-3" id="text-4-2">
 <pre class="example">
-f: LOAD 1; LIT 42; LT; JMC f.3;
-   LOAD 1; STORE 1; WRITE 1; JMP 0;
-f.3: LOAD 1; LIT 42; GT; JMC f.3.3;
-     LOAD 1; LIT 2; DIV; STORE 1; JMP f;
+f:     LOAD 1; LIT 42; LT; JMC f.3;
+       LOAD 1; STORE 1; WRITE 1; JMP 0;
+f.3:   LOAD 1; LIT 42; GT; JMC f.3.3;
+       LOAD 1; LIT 2; DIV; STORE 1; JMP f;
 f.3.3: LIT 42; STORE 1; WRITE 1; JMP 0;
 </pre>
 </div>
@@ -405,56 +405,51 @@ f.3.3: LIT 42; STORE 1; WRITE 1; JMP 0;
 </div>
 
 
-<div id="outline-container-org06e53a6" class="outline-2">
-<h2 id="org06e53a6"><span class="section-number-2">5</span> Lösungen zu Aufgabe Z1 (AGS 16.23)</h2>
+<div id="outline-container-org8b36a40" class="outline-2">
+<h2 id="org8b36a40"><span class="section-number-2">5</span> Lösungen zu Aufgabe Z1 (AGS 16.23)</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org7839668" class="outline-3">
-<h3 id="org7839668"><span class="section-number-3">5.1</span> Teilaufgabe a</h3>
+<div id="outline-container-orgd1323f3" class="outline-3">
+<h3 id="orgd1323f3"><span class="section-number-3">5.1</span> Teilaufgabe a</h3>
 <div class="outline-text-3" id="text-5-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left" />
+<col  class="org-right" />
 
 <col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">#</th>
+<th scope="col" class="org-right">#</th>
 <th scope="col" class="org-left">x</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left">0</td>
+<td class="org-right">0</td>
 <td class="org-left">a</td>
 </tr>
 
 <tr>
-<td class="org-left">1</td>
+<td class="org-right">1</td>
 <td class="org-left">a - 3</td>
 </tr>
 
 <tr>
-<td class="org-left">2</td>
+<td class="org-right">2</td>
 <td class="org-left">a - 6</td>
 </tr>
 
 <tr>
-<td class="org-left">⋮</td>
+<td class="org-right">⋮</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">i</td>
+<td class="org-right">i</td>
 <td class="org-left">a - 3⋅i</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
@@ -465,23 +460,23 @@ SI = (x ≥ 0) ∧ (x mod 3 = a mod 3)
 </div>
 </div>
 
-<div id="outline-container-org952e18b" class="outline-3">
-<h3 id="org952e18b"><span class="section-number-3">5.2</span> Teilaufgabe b</h3>
+<div id="outline-container-org6063cf9" class="outline-3">
+<h3 id="org6063cf9"><span class="section-number-3">5.2</span> Teilaufgabe b</h3>
 <div class="outline-text-3" id="text-5-2">
-<p>
-A = SI
-B = SI ∧ ¬(x &gt; 2)
-C = SI ∧ (x &gt; 2)
-D = SI
-E = (x - 3 ≥ 0) ∧ ((x - 3) mod 3 = a mod 3)
-</p>
+<ul class="org-ul">
+<li>A = SI</li>
+<li>B = SI ∧ ¬(x &gt; 2)</li>
+<li>C = SI ∧ (x &gt; 2)</li>
+<li>D = SI</li>
+<li>E = (x - 3 ≥ 0) ∧ ((x - 3) mod 3 = a mod 3)</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2018-07-04</p>
-<p class="date">Created: 2018-07-06 Fr 11:21</p>
+<p class="date">Created: 2018-07-06 Fr 14:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
