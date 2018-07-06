@@ -1,0 +1,106 @@
+#+title: Lösungen zum 11. Übungsblatt
+#+date: 2018-07-04
+#+email: tobias.denkinger@tu-dresden.de
+#+options: toc:nil
+
+* Organisatorisches
+  * Es wird einen Lernraum Programmierung geben.  (Aber wann?)
+  * heute: Übung zum Anfassen (wer ein Touch-Gerät hat)
+    * https://amcs.website
+    * PIN: 651470
+
+* Lösungen zu Aufgabe 1 (AGS 16.26)
+** Teilaufgabe a
+
+| # |  z | i |
+|---+----+---|
+| 0 |  0 | 0 |
+| 1 |  1 | 1 |
+| 2 |  8 | 2 |
+| 3 | 27 | 3 |
+| ⋮ |    |   |
+| i | i³ | i |
+
+SI = (i ≤ n) ∧ (z = i³)
+
+** Teilaufgabe b
+A = (z = 0) ∧ (n ≥ 0) ∧ (i = 0)
+B = C
+C = SI
+D = E
+E = SI ∧ ¬(i < n)
+F = (z = n³)
+G = (i < n) ∧ SI
+H = SI
+
+* Lösungen zu Aufgabe 2 (AGS 17.4)
+** Teilaufgabe a
+
+#+begin_src
+READ 1;  READ 2;
+LOAD 2;  LIT 3;  LOAD 1;  STORE 3;  STORE 2;  STORE 1;  JMP test;
+test: LOAD 1;  LIT 0;  EQ;  JMC test.3;
+LOAD 3;  STORE 1;  WRITE 1; JMP 0;
+test.3:  LOAD 1; LIT 1; SUB;
+         LOAD 3;
+         LOAD 2; LOAD 3; MUL; LOAD 3; ADD;
+         STORE 3; STORE 2; STORE 1;
+         JMP test;
+#+end_src
+
+** Teilaufgabe b
+#+begin_src haskell
+f :: Int -> Int -> Int -> Int
+f x1 x2 x3 = if x1 == 1
+             then x2
+             else f (x1 - 1) x3 (x2 * x2 + x3 * x3)
+
+main = do x1 <- readLn
+          print (f x1 1 1) 
+#+end_src
+
+* Lösungen zu Aufgabe 3 (AGS 17.27 a, b)
+** Teilaufgabe a
+#+begin_src haskell
+--   i      sum    j      prod
+f :: Int -> Int -> Int -> Int -> Int
+f x1 x2 x3 x4 = if x1 == 0
+                then x2
+                else if x3 == 0
+                     then f (x1 - 1) (x2 + x4) (x1 - 1) 1
+                     else f x1 x2 (x3 - 1) (x4 * x3)
+
+main = do x1 <- readLn
+          print (f x1 0 x1 1) 
+#+end_src
+** Teilaufgabe b
+
+#+begin_src
+f: LOAD 1; LIT 42; LT; JMC f.3;
+   LOAD 1; STORE 1; WRITE 1; JMP 0;
+f.3: LOAD 1; LIT 42; GT; JMC f.3.3;
+     LOAD 1; LIT 2; DIV; STORE 1; JMP f;
+f.3.3: LIT 42; STORE 1; WRITE 1; JMP 0;
+#+end_src
+
+
+* Lösungen zu Aufgabe Z1 (AGS 16.23)
+** Teilaufgabe a
+| # | x       |
+|---+---------|
+| 0 | a       |
+| 1 | a - 3   |
+| 2 | a - 6   |
+| ⋮ |         |
+| i | a - 3⋅i |
+|   |         |
+
+SI = (x ≥ 0) ∧ (x mod 3 = a mod 3)
+
+** Teilaufgabe b
+
+A = SI
+B = SI ∧ ¬(x > 2)
+C = SI ∧ (x > 2)
+D = SI
+E = (x - 3 ≥ 0) ∧ ((x - 3) mod 3 = a mod 3)
