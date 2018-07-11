@@ -73,9 +73,9 @@ trans(#include <stdio.h> int main() {…})
 ** Teilaufgabe a
 
 #+begin_src
-1: READ 2;   4: STORE 1;  7: LT;       10: LIT 1;    13: LOAD 2;   16: JMP 5;
-2: READ 3;   5: LOAD 1;   8: JMC 17;   11: ADD;      14: LOAD 2;   17: WRITE 2;
-3: LIT 0;    6: LOAD 3;   9: LOAD 1;   12: STORE 1;  15: MUL;
+1: READ 2;   4: STORE 1;  7: LT;       10: LIT 1;    13: LOAD 2;   16: STORE 2;
+2: READ 3;   5: LOAD 1;   8: JMC 17;   11: ADD;      14: LOAD 2;   17: JMP 5;
+3: LIT 0;    6: LOAD 3;   9: LOAD 1;   12: STORE 1;  15: MUL;      18: WRITE 2;
 #+end_src
 
 ** Teilaufgabe b
