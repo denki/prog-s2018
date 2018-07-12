@@ -1,0 +1,103 @@
+#+title: Lösungen zum 12. Übungsblatt
+#+date: 2018-07-11
+#+email: tobias.denkinger@tu-dresden.de
+#+options: toc:nil
+
+* Organisatorisches
+  * Lernraum am Sa., 28.07.2018, 13:00–15:00 Uhr, APB/E023
+  * heute: wieder Übung zum Anfassen (wer ein Touch-Gerät hat)
+    * https://amcs.website
+    * PIN: 651470
+
+* Lösungen zu Aufgabe 1 (AGS 17.7)
+
+#+begin_src haskell
+module Main where
+
+f1, f2, f21, f22, f3 :: Int -> Int -> Int
+f1 x1 x2 = f2 x1 1
+f2 x1 x2 = if x1 > 0 then f21 x1 x2
+                     else f3 x1 x2
+f21 x1 x2 = f22 x1 (x2 * x1)
+f22 x1 x2 = f2 (x1 - 1) x2
+f3 x1 x2 = x2
+
+main = do x1 <- readLn
+          printLn (f1 x1 1)
+#+end_src
+
+[[./sol12-1-slide.png]]
+
+[[./sol12-1-if-then.png]]
+
+* Lösungen zu Aufgabe 2 (AGS 17.25a)
+
+#+begin_src
+h:   LOAD 3; LOAD 1; GT; JMC h.3;
+     LOAD 2; LIT 1; SUB; STORE 1; WRITE 1; JMP 0;
+h.3: LOAD 2;  LOAD 1; LOAD 3; SUB;  LOAD 2;  STORE 3; STORE 2; STORE 1; JMP h;
+#+end_src
+
+* Lösungen zu Aufgabe 3 (AGS 17.27c)
+
+[[./sol12-3-slide.png]]
+
+#+begin_src c
+if (x1 % 2 == 0)
+  x1 = x1 / 2;
+else
+  x1 = x1 - 1;
+x1 = 2 * x1;
+#+end_src
+
+* Lösungen zu Aufgabe 4 (AGS 12.3.8)
+** Induktionsanfang
+
+Sei x :: Int.
+#+begin_src haskell
+sumTree (overlay (Leaf x) (Leaf x))
+= sumTree (Leaf (x + x))                % 12
+= x + x                                 % 4
+= 2 * x                                 % distr.
+= 2 * sumTree (Leaf x)                  % 4
+= 2 * sumTree (revTree (Leaf x))        % 8
+#+end_src
+
+** Induktionsschritt
+
+Sei t1, t2 :: Tree, sodass gilt:
+  sumTree (overlay t1 t1) = 2 * sumTree (revTree t1))
+  sumTree (overlay t2 t2) = 2 * sumTree (revTree t2))
+
+Sei weiterhin x :: Int.
+
+#+begin_src haskell
+sumTree (overlay (Branch x t1 t2) (Branch x t1 t2))
+= sumTree (Branch (x + x) (overlay t1 t1) (overlay t2 t2))       % 13
+= (x + x) + sumTree (overlay t1 t1) + sumTree (overlay t2 t2)    % 5
+= (x + x) + 2 * sumTree (revTree t1) + 2 * sumTree (revTree t2)  % IH
+= 2 * (x + sumTree (revTree t2) + sumTree (revTree t1))          % distr. + comm.
+= 2 * sumTree (Branch x (revTree t2) (revTree t1))               % 5
+= 2 * sumTree (revTree (Branch x t1 t2))                         % 9
+#+end_src
+
+* Lösungen zu Aufgabe Z1 (AGS 16.28)
+** Teilaufgabe a
+
+#+begin_src
+f:   LOAD 1; LIT 0; LE; JMC f.3;
+     LOAD 2; STORE 1; WRITE 1; JMP 0;
+f.3: LOAD 1; LIT 2; DIV; LOAD 2; LOAD 1; ADD; STORE 2; STORE 1; JMP f; 
+#+end_src
+
+** Teilaufgabe b
+
+[[./sol12-z1-slide.png]]
+
+#+begin_src c
+while (x1 > 0) {
+  if (x1 % 2 == 0)
+    x2 = x2 + x1;
+  x1 = x1 - 1; 
+}
+#+end_src
