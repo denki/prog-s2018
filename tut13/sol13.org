@@ -1,0 +1,126 @@
+#+title: Lösungen zum 13. Übungsblatt
+#+date: 2018-07-18
+#+email: tobias.denkinger@tu-dresden.de
+#+options: toc:nil
+
+* Lösungen zu Aufgabe 1 (AGS 17.25b)
+
+  * A: scanf("%i", x1);
+       flag = 1;
+       x1 = 3 + x1;
+       x2 = 5;
+  * B: x2 == x1
+  * C: flag = 0;
+       result = 30;
+  * D: flag = 0;
+       result = x2;
+  * E: function == 2;
+  * F: if (10 <= x2) {
+         function = 2;
+         x1 = x1 - x2;
+         x2 = x2 - 1;
+       } else {
+         function = 1;
+         x1 = x1 + x2;
+         x2 = 10;
+       }
+
+* Wiederholungsaufgaben
+
+| # | Aufgabe        | Zahl |
+|---+----------------+------|
+| 4 | λ-Kalkül       |   24 |
+| 5 | Prolog⁻        |   17 |
+| 3 | Unifikation    |   16 |
+| 2 | Haskell        |    9 |
+| 6 | C₁/AM₁         |    8 |
+| 7 | H₀→AM₀ / H₀→C₀ |    5 |
+|   |                |      |
+
+Die Musterlösungen für alle mit * markierten Aufgaben stehen in der Aufgabensammlung.
+
+** Lösungen zu Aufgabe 2 (AGS 12.1.50*)
+** Lösungen zu Aufgabe 3 (AGS 12.2.14*)
+** Lösungen zu Aufgabe 4 (AGS 12.4.33*)
+*** Aufgabe a
+#+begin_src elisp
+(λfx.x(f(fx)))(λy.xy)
+   ---------- -------
+   GV={x}     FV={x}
+
+⇒ₐ (λfx₁.x₁(f(fx₁)))(λy.xy)
+
+⇒ᵦ (λx₁.x₁((λy.xy)((λy.xy)x₁)))
+                      --- --
+                    GV=∅  FV={x₁}
+
+⇒ᵦ (λx₁.x₁((λy.xy)(xx₁)))
+              --- ----
+            GV=∅  FV={x, x₁}
+
+⇒ᵦ (λx₁.x₁(x(xx₁)))
+#+end_src
+
+*** Aufgabe b
+
+#+begin_src haskell
+f :: Int -> Int -> Int
+f x 0 = x * 2
+f x y | y `mod` 2 == 0 = f x (y - 1)
+      | otherwise      = f (x * 2) (y - 1)
+#+end_src
+
+*** Aufgabe c
+
+#+begin_src elisp
+⟨Y⟩⟨F⟩
+= (λh. (λy. h(yy)) (λy. h(yy))) ⟨F⟩
+⇒* (λy. ⟨F⟩(yy)) (λy. ⟨F⟩(yy)) = ⟨t⟩ ⟨t⟩
+⇒* ⟨F⟩ ((λy. ⟨F⟩(yy)) (λy. ⟨F⟩(yy))) = ⟨F⟩ (⟨t⟩⟨t⟩)
+
+⟨Y⟩⟨F⟩⟨2⟩⟨1⟩
+⇒* ⟨F⟩ (⟨t⟩⟨t⟩) ⟨2⟩ ⟨1⟩
+⇒* ⟨ite⟩ (⟨iszero⟩⟨1⟩) (…) (⟨ite⟩ (⟨iszero⟩(⟨mod⟩⟨1⟩⟨2⟩)) (…) ((⟨t⟩⟨t⟩) (⟨mult⟩⟨2⟩⟨2⟩) (⟨pred⟩⟨1⟩)))
+         -------------            -----------------------               -------------- -----------
+         ⇒* ⟨false⟩               ⇒* ⟨false⟩                            ⇒* ⟨4⟩         ⇒* ⟨0⟩
+⇒* ⟨t⟩⟨t⟩ ⟨4⟩ ⟨0⟩
+⇒* ⟨F⟩ (⟨t⟩⟨t⟩) ⟨4⟩ ⟨0⟩
+⇒* ⟨ite⟩ (⟨iszero⟩⟨0⟩) (⟨mult⟩⟨4⟩⟨2⟩) (…)
+         ------------- --------------
+         ⇒* ⟨true⟩     ⇒* ⟨8⟩
+⇒* ⟨8⟩
+#+end_src
+
+** Lösungen zu Aufgabe 5
+*** Thomas' Lösung
+
+#+begin_src prolog
+                  ?-  c(<2>, <2>, <4>).
+                  ?-* c(<2>, 0, Z2), b(Z2, <2>, Z1), b(Z1, <2>, <4>).                        % 13
+{Z2 = <1>}        ?-  nat(<2>), b(<1>, <2>, Z1), b(Z1, <2>, <4>).                            % 12
+                  ?-* nat(0), b(<1>, <2>, Z1), b(Z1, <2>, <4>).                              % 2
+                  ?-  b(<1>, <2>, Z1), b(Z1, <2>, <4>).                                      % 1
+                  ?-* b(<1>, 0, M2), a(M2, <1>, M1), a(M1, <1>, Z1), b(Z1, <2>, <4>).        % 10
+{M2 = 0}          ?-  nat(<1>), a(0, <1>, M1), a(M1, <1>, Z1), b(Z1, <2>, <4>).              % 9
+                  ?-  nat(0), a(0, <1>, M1), a(M1, <1>, Z1), b(Z1, <2>, <4>).                % 2
+                  ?-  a(0, <1>, M1), a(M1, <1>, Z1), b(Z1, <2>, <4>).                        % 1
+{M1 = <1>}        ?-  nat(<1>), a(<1>, <1>, Z1), b(Z1, <2>, <4>).                            % 6
+                  ?-  nat(0), a(<1>, <1>, Z1), b(Z1, <2>, <4>).                              % 2
+                  ?-  a(<1>, <1>, Z1), b(Z1, <2>, <4>).                                      % 1
+{Z1 = s(s(Z11))}  ?-  a(0, 0, Z11), b(s(s(Z11)), <2>, <4>).                                  % 7
+{Z11 = 0}         ?-  b(<2>, <2>, <4>).                                                      % 4
+                  ?-* b(<2>, 0, M4), a(M4, <2>, M3), a(M3, <2>, <4>).                        % 10 
+{M4 = 0}          ?-  nat(<2>), a(0, <2>, M3), a(M3, <2>, <4>).                              % 9
+                  ?-* nat(0), a(0, <2>, M3), a(M3, <2>, <4>).                                % 2 
+                  ?-  a(0, <2>, M3), a(M3, <2>, <4>).                                        % 1
+{M3 = <2>}        ?-  nat(<2>), a(<2>, <2>, <4>).                                            % 6
+                  ?-* nat(0), a(<2>, <2>, <4>).                                              % 2 
+                  ?-  a(<2>, <2>, <4>).                                                      % 1
+                  ?-* a(0, 0, 0).                                                            % 7
+                  ?-.                                                                        % 4
+#+end_src
+
+  * a—Addition, b—Multiplikation, c—Potenz
+
+** Lösungen zu Aufgabe 6 (AGS 15.23*)
+** Lösungen zu Aufgabe 7 (AGS 17.14*)
